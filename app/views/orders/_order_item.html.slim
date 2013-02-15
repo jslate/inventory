@@ -1,0 +1,10 @@
+tr
+  td = order_item.item.name
+  td
+    span.text = order_item.quantity
+    = text_field_tag :quantity, order_item.quantity, class: 'quantity-field', style: 'width: 25px; display: none;'
+  td = order_item.item.unit
+  td = number_to_currency(order_item.item.unit_price)
+  td = number_to_currency(order_item.item.unit_price * order_item.quantity)
+  td
+    = button_group [['pencil', update_item_order_path(order), class: 'edit-row'], ['trash', delete_item_order_path(order, order_item_id: order_item.id), class: 'delete-row', remote: true, method: 'delete', confirm: 'Are you sure you want to remove this item?']]

@@ -1,0 +1,10 @@
+- unless @item.errors.empty?
+  - content_for :errors do
+    .alert.alert-error = @item.errors.full_messages.to_sentence
+
+= simple_form_for @item, html: {class: 'form-horizontal'} do |f|
+  = f.input :name
+  = f.input :unit
+  = f.input :unit_price, as: :string, input_html: { class: 'money' }
+  .btns
+    = f.button :submit, 'Save', class: 'btn btn-primary pull-right'

@@ -1,0 +1,51 @@
+doctype html
+html(lang='#{locale}' xmlns:fb='http://www.facebook.com/2008/fbml' xmlns:og='http://ogp.me/ns')
+  head
+    title = content_for(:title)
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  body
+
+    .container
+
+      / <div class="navbar">
+      /   <div class="navbar-inner">
+      /     <a class="brand" href="#">Title</a>
+      /     <ul class="nav">
+      /       <li class="active"><a href="#">Home</a></li>
+      /       <li><a href="#">Link</a></li>
+
+      .navbar
+        .navbar-inner
+          .brand MTL Inventory
+          ul.nav
+            li class="#{@home_page ? 'active' : ''}"
+              a href="#{root_path}" Home
+            li class="#{@items_page ? 'active' : ''}"
+              a href="#{items_path}" Items
+            li class="#{@orders_page ? 'active' : ''}"
+              a href="#{orders_path}" Orders
+
+      .row
+        .span4
+        .span10
+          h1 = content_for(:title)
+
+      .row
+        .span4
+        .span10
+          - if flash[:notice]
+            .alert = flash[:notice]
+
+          - if flash[:error]
+            .alert.alert-error = flash[:error]
+          - else
+            = content_for(:errors)
+
+      .row
+        .span4
+        .span10
+          = yield
+

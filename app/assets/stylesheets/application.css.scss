@@ -1,0 +1,15 @@
+@import "bootstrap";
+@import "items";
+
+abbr[title], abbr[data-original-title] {
+  cursor: pointer;
+  border-bottom: none;
+}
+
+.container { margin-top: 10px; }
+.form-horizontal { margin-top: 25px;}
+
+.btns { margin-top: 35px;
+  .btn {margin-right: 10px;}
+}
+.help-inline {display: none !important;}

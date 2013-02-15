@@ -1,0 +1,10 @@
+- content_for(:title, 'Inventory Items')
+
+table.table.table-striped
+  - @items.each do |item|
+    tr
+      td = link_to(item.name, item_path(item))
+      td = item.unit
+      td.money = number_to_currency(item.unit_price)
+.btns
+  a.btn.btn-primary href="#{new_item_path}" New Item

@@ -1,0 +1,9 @@
+- content_for(:title, 'Inventory Orders')
+
+table.table.table-striped
+  - @orders.each do |order|
+    tr
+      td = link_to(order.number, order_path(order))
+
+.btns
+  a.btn.btn-primary href="#{new_order_path}" New Order

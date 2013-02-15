@@ -1,0 +1,25 @@
+h1 = @order.number
+
+= simple_form_for :order_item do |f|
+  table.table.table-bordered
+    tr
+      th Item
+      th Quantity
+      th Unit
+      th Unit Price
+      th Extended Price
+      th
+    - @order.order_items.each do |oi|
+      = render 'order_item', {order: @order, order_item: oi}
+    tr
+      td
+        = f.input :item, as: :select, collection: Item.all.map{|i|[i.name, i.id]}, label: false
+      td
+        = f.input :quantity, label: false, input_html: {style: 'width: 25px;'}
+      td
+      td
+      td
+      td = button_group([['plus-sign', add_item_order_path(@order), remote: true, method: :post, class: 'add-item']])
+
+.btns
+  a.btn.btn-warning href="#{order_path}" data-method="delete" data-confirm="Are you sure you want to delete this order?" Delete
