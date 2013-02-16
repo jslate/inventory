@@ -9,7 +9,6 @@ $ ->
   $('.add-item').on 'ajax:success', (event, data) ->
     link = $(event.target)
     row = link.closest('tr')
-    console.debug data
     row.before(data)
 
   $('.delete-row').on 'ajax:complete', (event) ->

@@ -13,7 +13,8 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    respond_with @order
+    @order.save
+    return redirect_to order_path(@order)
   end
 
   def create
