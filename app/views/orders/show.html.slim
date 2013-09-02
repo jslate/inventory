@@ -19,7 +19,7 @@ h1 = "Order ##{@order.number}"
       td
       td
       td
-      td = button_group([['plus-sign', add_item_order_path(@order), remote: true, method: :post, class: 'add-item']])
+      td = button_group([['plus-sign', add_item_order_path(@order), remote: true, method: :post, class: 'add-item disabled', id: 'add-item']])
 
 .btns
   a.btn.btn-warning href="#{order_path}" data-method="delete" data-confirm="Are you sure you want to delete this order?" Delete
